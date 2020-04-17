@@ -11,11 +11,11 @@
     "noUnusedParameters": true,
     "noUnusedLocals": true,
     "noImplicitAny": true,
-    "target": "es6",
+    "target": "es5",
     "lib": ["dom", "es2017"],
     "skipLibCheck": true,
     "strict": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
   },
   "exclude": ["node_modules"]
 }
