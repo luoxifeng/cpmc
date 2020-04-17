@@ -15,7 +15,7 @@
     "lib": ["dom", "es2017"],
     "skipLibCheck": true,
     "strict": true,
-    "outDir": "./dist",
+    "outDir": "./dist"
   },
   "exclude": ["node_modules"]
 }
