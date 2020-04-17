@@ -2,8 +2,6 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "may-ui": ["components/index.tsx"],
-      "may-ui/es/*": ["components/*"]
     },
     "strictNullChecks": true,
     "moduleResolution": "node",
@@ -17,7 +15,7 @@
     "lib": ["dom", "es2017"],
     "skipLibCheck": true,
     "strict": true,
-    "noEmit": true 
+    "outDir": "./dist"
   },
-  "exclude": ["node_modules", "lib", "es"]
+  "exclude": ["node_modules"]
 }
