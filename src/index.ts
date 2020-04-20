@@ -1,16 +1,22 @@
 
 import { TYPES } from './types';
 
-type j = any[];
+export { TYPES };
 
-export function createProcessManagerCreator({
+type PromiseType = 'all' | 'race';
+
+export default function createProcessManagerCreator(): [
+
+];
+
+export default function createProcessManagerCreator<T extends TYPES = TYPES.ALL>({
   type = TYPES.ALL
 } = { type: TYPES.ALL }) {
   let baseCount = 0,
     usedCount = 0,
     baseResolve = () => { };
   const allProcess: Promise<any>[] = [];
-  const basePromise = new Promise(res => baseResolve = () => res(allProcess));
+  const basePromise = new Promise<any>(res => baseResolve = () => res(allProcess));
   const resolveWrapper = <T>(resolve: (res: T) => void) => (arg: T) => {
     (type === TYPES.RACE || (baseCount === ++usedCount)) && baseResolve();
     resolve(arg);
@@ -32,9 +38,22 @@ export function createProcessManagerCreator({
     };
   };
 
-  const createManager = (...args: any[]) => basePromise
-    .then(Promise[type].bind<any>(Promise))
-    .then(...args);
+  interface createManagerAll {
+    <T>(values: readonly (T | PromiseLike<T>)[]): Promise<T[]>;
+  }
+
+  interface createManagerRace {
+   
+  }
+
+  type createManager<F> = F extends TYPES.ALL ? createManagerAll : createManagerRace;
+
+
+
+  function createManager() {
+    return basePromise
+      // .then(Promise[type].bind<any>(Promise));
+  }
 
   return [createProcess, createManager];
 }
