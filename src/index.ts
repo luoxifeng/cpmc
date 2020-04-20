@@ -3,7 +3,7 @@ import { TYPES } from './types';
 
 export { TYPES };
 
-type PromiseType = 'all' | 'race';
+// type PromiseType = 'all' | 'race';
 
 export default function createProcessManagerCreator(): [
 
@@ -52,7 +52,7 @@ export default function createProcessManagerCreator<T extends TYPES = TYPES.ALL>
 
   function createManager() {
     return basePromise
-      // .then(Promise[type].bind<any>(Promise));
+      .then(Promise[type].bind<any>(Promise));
   }
 
   return [createProcess, createManager];
